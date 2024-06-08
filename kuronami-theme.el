@@ -56,7 +56,6 @@
       (kuronami-gray1   "#c9c9c9")  ; gray0 -> 3 tints lighter
       (kuronami-green0  "#708b4c")  ; green3 -> 4 shades darker
       (kuronami-green1  "#668b8b")  ; Emacs default "pale turquoise 4"
-      (kuronami-green2  "#65bab4")  ; blue1 -> analogous #7fe9e2 -> 2 shades darker
       (kuronami-green3  "#bbe97f")  ; blue1 -> triadic
       (kuronami-red0    "#e97f86")  ; blue1 -> triadic #e97fbb -> analogous
       (kuronami-white0  "#fffafa")  ; Emacs default "snow"
@@ -75,7 +74,7 @@
    `(isearch             ((t (:background ,kuronami-red0 :foreground ,kuronami-black0))))
    `(lazy-highlight      ((t (:background ,kuronami-green1))))
    `(line-number         ((t (:inherit default :foreground ,kuronami-blue2))))
-   `(link                ((t (:foreground ,kuronami-green2 :bold t :underline t))))
+   `(link                ((t (:foreground ,kuronami-blue1 :bold t :underline t))))
    `(link-visited        ((t (:foreground ,kuronami-gray1 :bold t :underline t))))
    `(match               ((t (:inherit lazy-highlight))))
    `(minibuffer-prompt   ((t (:foreground ,kuronami-white0))))
