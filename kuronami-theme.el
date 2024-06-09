@@ -143,11 +143,7 @@
 
    ;; Corfu:
    `(corfu-current ((t (:background ,kuronami-green1))))
-
-   ;; Markdown:
-   `(markdown-code-face             ((t (:extend t :background ,kuronami-black1 :foreground ,kuronami-gray0))))
-   `(markdown-language-keyword-face ((t (:foreground ,kuronami-blue1))))
-   `(markdown-table-face            ((t (:foreground ,kuronami-gray0))))))
+   ))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
