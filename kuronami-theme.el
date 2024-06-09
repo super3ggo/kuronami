@@ -127,23 +127,32 @@
    `(mode-line-inactive  ((t (:background ,kuronami-black2 :foreground ,kuronami-gray0))))
 
    ;; Whitespace:
-   `(trailing-whitespace         ((t (:inherit whitespace-trailing)))) ; Different from whitespace-trailing? Shrug.
-   `(whitespace-empty            ((t (:background ,kuronami-red0 :foreground ,kuronami-black2))))
-   `(whitespace-hspace           ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
-   `(whitespace-indentation      ((t (:inherit whitespace-empty))))
-   `(whitespace-line             ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
-   `(whitespace-newline          ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
-   `(whitespace-space            ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
-   `(whitespace-space-after-tab  ((t (:inherit whitespace-empty))))
-   `(whitespace-space-before-tab ((t (:inherit whitespace-empty))))
-   `(whitespace-tab              ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
-   `(whitespace-trailing         ((t (:inherit whitespace-empty))))
+   ;; This theme assumes the user has whitespace-mode configured for the following faces:
+   ;; - face
+   ;; - indentation
+   ;; - missing-newline-at-eof
+   ;; - newline
+   ;; - space-after-tab
+   ;; - space-before-tab
+   ;; - space-mark tab-mark
+   ;; - spaces
+   ;; - tabs
+   ;; - trailing
+
+   ;; TODO() Consider picking another color for unwanted whitespace
+   `(whitespace-hspace                 ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
+   `(whitespace-indentation            ((t (:inherit whitespace-hspace))))
+   `(whitespace-missing-newline-at-eof ((t (:background ,kuronami-red0 :foreground ,kuronami-black2))))
+   `(whitespace-space                  ((t (:inherit whitespace-hspace))))
+   `(whitespace-space-after-tab        ((t (:background ,kuronami-black0 :foreground ,kuronami-red0))))
+   `(whitespace-space-before-tab       ((t (:inherit whitespace-space-after-tab))))
+   `(whitespace-tab                    ((t (:inherit whitespace-hspace))))
+   `(whitespace-trailing               ((t (:inherit whitespace-missing-newline-at-eof))))
 
    ;;; Third Party:
 
    ;; Corfu:
-   `(corfu-current ((t (:background ,kuronami-green1))))
-   ))
+   `(corfu-current ((t (:background ,kuronami-green1))))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
