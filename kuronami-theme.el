@@ -54,9 +54,9 @@
       (kuronami-blue2   "#a5bad7")  ; yellow0 -> complementary #8fa9cd -> 2 tints lighter
       (kuronami-gray0   "#b3b3b3")  ; Emacs default "gray/grey 70"
       (kuronami-gray1   "#c9c9c9")  ; gray0 -> 3 tints lighter
-      (kuronami-green0  "#708b4c")  ; green3 -> 4 shades darker
+      (kuronami-green0  "#708b4c")  ; green2 -> 4 shades darker
       (kuronami-green1  "#668b8b")  ; Emacs default "pale turquoise 4"
-      (kuronami-green3  "#bbe97f")  ; blue1 -> triadic
+      (kuronami-green2  "#bbe97f")  ; blue1 -> triadic
       (kuronami-red0    "#e97f86")  ; blue1 -> triadic #e97fbb -> analogous
       (kuronami-white0  "#fffafa")  ; Emacs default "snow"
       (kuronami-yellow0 "#cdb38f")) ; Naysayer #d1b897 -> 1 tint lighter #d5bfa1 -> 1 mono darker
@@ -81,7 +81,7 @@
    `(region              ((t (:extend nil :background ,kuronami-blue0)))) ; Like Vim!
    `(show-paren-match    ((t (:background ,kuronami-blue2))))
    `(show-paren-mismatch ((t (:background ,kuronami-red0))))
-   `(success             ((t (:foreground ,kuronami-green3 :weight bold))))
+   `(success             ((t (:foreground ,kuronami-green2 :weight bold))))
    `(warning             ((t (:foreground ,kuronami-yellow0 :weight bold))))
 
    ;; Font Lock:
@@ -117,7 +117,7 @@
 
    ;; Ido:
    `(ido-first-match ((t (:foreground ,kuronami-yellow0 :italic t))))
-   `(ido-only-match  ((t (:foreground ,kuronami-green3 :bold t :italic t))))
+   `(ido-only-match  ((t (:foreground ,kuronami-green2 :bold t :italic t))))
    `(ido-subdir      ((t (:foreground ,kuronami-white0))))
 
    ;; Mode Line:
