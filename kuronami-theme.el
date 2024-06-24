@@ -60,6 +60,7 @@
       (kuronami-red0    "#e97f86")  ; blue1 -> triadic #e97fbb -> analogous
       (kuronami-white0  "#fffafa")  ; Emacs default "snow"
       (kuronami-yellow0 "#cdb38f")) ; Naysayer #d1b897 -> 1 tint lighter #d5bfa1 -> 1 mono darker
+
   (custom-theme-set-faces
    `kuronami
 
@@ -74,8 +75,8 @@
    `(isearch             ((t (:background ,kuronami-red0 :foreground ,kuronami-black0))))
    `(lazy-highlight      ((t (:background ,kuronami-green1))))
    `(line-number         ((t (:inherit default :foreground ,kuronami-blue2))))
-   `(link                ((t (:foreground ,kuronami-blue1 :bold t :underline t))))
-   `(link-visited        ((t (:foreground ,kuronami-gray1 :bold t :underline t))))
+   `(link                ((t (:foreground ,kuronami-blue1 :italic t :underline t))))
+   `(link-visited        ((t (:foreground ,kuronami-gray1 :italic t :underline t))))
    `(match               ((t (:inherit lazy-highlight))))
    `(minibuffer-prompt   ((t (:foreground ,kuronami-white0))))
    `(region              ((t (:extend nil :background ,kuronami-blue0)))) ; Like Vim!
@@ -84,7 +85,6 @@
    `(success             ((t (:foreground ,kuronami-green2 :weight bold))))
    `(warning             ((t (:foreground ,kuronami-yellow0 :weight bold))))
 
-   ;; Font Lock:
    `(font-lock-builtin-face           ((t (:foreground ,kuronami-blue2))))
    `(font-lock-comment-face           ((t (:foreground ,kuronami-blue1 :italic t))))
    `(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
@@ -99,28 +99,25 @@
    `(font-lock-variable-name-face     ((t (:inherit font-lock-function-name-face))))
    `(font-lock-warning-face           ((t (:foreground ,kuronami-red0 :bold t :italic t))))
 
-   ;; Alphabetically from this point.
+   ;; Listed alphabetically from this point.
 
-   ;; Compilation:
    `(compilation-column-number  ((t (:foreground ,kuronami-white0))))
    `(compilation-line-number    ((t (:foreground ,kuronami-blue2))))
    `(compilation-mode-line-exit ((t (:inherit compilation-info))))
    `(compilation-mode-line-fail ((t (:inherit compilation-error))))
 
-   ;; Completions:
    `(completions-common-part      ((t (:foreground ,kuronami-white0))))
    `(completions-first-difference ((t (:foreground ,kuronami-yellow0 :bold t))))
 
-   ;; Flyspell:
+   `(dired-directory ((t (:inherit font-lock-builtin-face))))
+
    `(flyspell-duplicate ((t nil))) ; Setting "flyspell-duplicate-distance" does not work for Emacs 27.2 on macOS x86 so disable the Face.
    `(flyspell-incorrect ((t (:underline (:color ,kuronami-red0 :style wave)))))
 
-   ;; Ido:
    `(ido-first-match ((t (:foreground ,kuronami-yellow0 :italic t))))
    `(ido-only-match  ((t (:foreground ,kuronami-green2 :bold t :italic t))))
    `(ido-subdir      ((t (:foreground ,kuronami-white0))))
 
-   ;; Mode Line:
    `(mode-line           ((t (:background ,kuronami-gray0 :foreground ,kuronami-black1)))) ; Just colors. No "boxing" effect.
    `(mode-line-buffer-id ((t nil)))
    `(mode-line-emphasis  ((t nil)))
@@ -139,10 +136,10 @@
    ;; - tabs
    ;; - trailing
 
-   ;; TODO() Consider picking another color for unwanted whitespace
+   ;; TODO() Consider picking a color other than red0 for unwanted whitespace... Maybe yellow0?
    `(whitespace-hspace                 ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
    `(whitespace-indentation            ((t (:inherit whitespace-hspace))))
-   `(whitespace-missing-newline-at-eof ((t (:background ,kuronami-red0 :foreground ,kuronami-black2))))
+   `(whitespace-missing-newline-at-eof ((t (:background ,kuronami-yellow0 :foreground ,kuronami-black2))))
    `(whitespace-space                  ((t (:inherit whitespace-hspace))))
    `(whitespace-space-after-tab        ((t (:background ,kuronami-black0 :foreground ,kuronami-red0))))
    `(whitespace-space-before-tab       ((t (:inherit whitespace-space-after-tab))))
@@ -151,8 +148,33 @@
 
    ;;; Third Party:
 
-   ;; Corfu:
-   `(corfu-current ((t (:background ,kuronami-green1))))))
+   `(corfu-current ((t (:background ,kuronami-green1)))))
+
+  (custom-theme-set-variables
+   'kuronami
+
+   ;;; Vanilla:
+
+   ;; TODO() Determine a more elegant way to do this?
+   ;; TODO() Try adding just the color you want to change
+   '(ibuffer-fontification-alist
+     '((10 buffer-read-only
+           font-lock-constant-face)
+       (15 (and buffer-file-name
+                (string-match ibuffer-compressed-file-name-regexp buffer-file-name))
+           font-lock-doc-face)
+       (20 (string-match "^\\*" (buffer-name))
+           font-lock-keyword-face)
+       (25 (and (string-match "^ " (buffer-name)) (null buffer-file-name))
+           italic)
+       (30 (memq major-mode ibuffer-help-buffer-modes)
+           font-lock-comment-face)
+       (35 (derived-mode-p 'dired-mode)
+           font-lock-builtin-face) ; This is the color we actually want to change
+       (40 (and (boundp 'emacs-lock-mode) emacs-lock-mode)
+           ibuffer-locked-buffer)))
+   )
+  )
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
