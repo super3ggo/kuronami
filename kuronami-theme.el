@@ -123,26 +123,42 @@
    `(mode-line-emphasis  ((t nil)))
    `(mode-line-inactive  ((t (:background ,kuronami-black2 :foreground ,kuronami-gray0))))
 
-   ;; Whitespace:
-   ;; This theme assumes the user has whitespace-mode configured for the following faces:
+   ;; This theme assumes the user has whitespace-style configured for the
+   ;; following Faces:
+   ;;
+   ;; - empty
    ;; - face
    ;; - indentation
    ;; - missing-newline-at-eof
    ;; - newline
    ;; - space-after-tab
    ;; - space-before-tab
-   ;; - space-mark tab-mark
+   ;; - space-mark
    ;; - spaces
+   ;; - tab-mark
    ;; - tabs
    ;; - trailing
+   ;;
+   ;; whitespace-empty is disabled, i.e. this Face has no styling. The idea is
+   ;; to include the empty Face in whitespace-style due to the function
+   ;; whitespace-cleanup using this variable in order to determine how to remove
+   ;; certain whitespace characters.
+   ;;
+   ;; Similarly, whitespace-line is also disabled even when the user includes
+   ;; the line Face in whitespace-style.
+   ;;
+   ;; By contrast, whitespace-newline does have applicable styling when the user
+   ;; includes the newline-mark Face in whitespace-style.
 
-   ;; TODO() Consider picking a color other than red0 for unwanted whitespace... Maybe yellow0?
+   `(whitespace-empty                  ((t (:background nil :foreground nil))))
    `(whitespace-hspace                 ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
    `(whitespace-indentation            ((t (:inherit whitespace-hspace))))
+   `(whitespace-line                   ((t (:background nil :foreground nil))))
    `(whitespace-missing-newline-at-eof ((t (:background ,kuronami-yellow0 :foreground ,kuronami-black2))))
+   `(whitespace-newline                ((t (:inherit whitespace-hspace))))
    `(whitespace-space                  ((t (:inherit whitespace-hspace))))
-   `(whitespace-space-after-tab        ((t (:background ,kuronami-black0 :foreground ,kuronami-red0))))
-   `(whitespace-space-before-tab       ((t (:inherit whitespace-space-after-tab))))
+   `(whitespace-space-after-tab        ((t (:inherit whitespace-hspace))))
+   `(whitespace-space-before-tab       ((t (:inherit whitespace-hspace))))
    `(whitespace-tab                    ((t (:inherit whitespace-hspace))))
    `(whitespace-trailing               ((t (:inherit whitespace-missing-newline-at-eof))))
 
