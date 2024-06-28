@@ -128,6 +128,7 @@
    ;;
    ;; - empty
    ;; - face
+   ;; - lines
    ;; - indentation
    ;; - missing-newline-at-eof
    ;; - newline
@@ -144,16 +145,13 @@
    ;; whitespace-cleanup using this variable in order to determine how to remove
    ;; certain whitespace characters.
    ;;
-   ;; Similarly, whitespace-line is also disabled even when the user includes
-   ;; the line Face in whitespace-style.
-   ;;
    ;; By contrast, whitespace-newline does have applicable styling when the user
    ;; includes the newline-mark Face in whitespace-style.
 
    `(whitespace-empty                  ((t (:background nil :foreground nil))))
    `(whitespace-hspace                 ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
    `(whitespace-indentation            ((t (:inherit whitespace-hspace))))
-   `(whitespace-line                   ((t (:background nil :foreground nil))))
+   `(whitespace-line                   ((t (:inherit whitespace-hspace))))
    `(whitespace-missing-newline-at-eof ((t (:background ,kuronami-yellow0 :foreground ,kuronami-black2))))
    `(whitespace-newline                ((t (:inherit whitespace-hspace))))
    `(whitespace-space                  ((t (:inherit whitespace-hspace))))
