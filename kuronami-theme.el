@@ -52,10 +52,7 @@
       (kuronami-blue0   "#2e41ac")  ; Random image of blue Unit-00
       (kuronami-blue1   "#7fbbe9")  ; Official Ayanami Blue!
       (kuronami-blue2   "#a5bad7")  ; yellow0 -> complementary #8fa9cd -> 2 tints lighter
-      (kuronami-gray0   "#b3b3b3")  ; Emacs default "gray/grey 70"
-      (kuronami-gray1   "#a7a7a7")  ; gray0 -> 3 tints lighter
-      ;; (kuronami-gray1   "#b7b7b7")  ; gray0 -> 3 tints lighter
-      ;; (kuronami-gray1   "#c9c9c9")  ; gray0 -> 3 tints lighter
+      (kuronami-gray0   "#a7a7a7")  ; Emacs default "gray65/grey65/#a6a6a6" but a hair lighter
       (kuronami-green0  "#708b4c")  ; green2 -> 4 shades darker
       (kuronami-green1  "#668b8b")  ; Emacs default "pale turquoise 4"
       (kuronami-green2  "#bbe97f")  ; blue1 -> triadic
@@ -70,7 +67,7 @@
 
    ;; UI:
    `(cursor              ((t (:background ,kuronami-red0))))
-   `(default             ((t (:background ,kuronami-black0 :foreground ,kuronami-gray1))))
+   `(default             ((t (:background ,kuronami-black0 :foreground ,kuronami-gray0))))
    `(error               ((t (:foreground ,kuronami-red0 :weight bold))))
    `(fringe              ((t (:background ,kuronami-black0))))
    `(highlight           ((t (:background ,kuronami-green0))))
@@ -78,7 +75,7 @@
    `(lazy-highlight      ((t (:background ,kuronami-green1))))
    `(line-number         ((t (:inherit default :foreground ,kuronami-blue2))))
    `(link                ((t (:foreground ,kuronami-blue1 :italic t :underline t))))
-   `(link-visited        ((t (:foreground ,kuronami-gray1 :italic t :underline t))))
+   `(link-visited        ((t (:foreground ,kuronami-gray0 :italic t :underline t))))
    `(match               ((t (:inherit lazy-highlight))))
    `(minibuffer-prompt   ((t (:foreground ,kuronami-white0))))
    `(region              ((t (:extend nil :background ,kuronami-blue0)))) ; Like Vim!
@@ -112,7 +109,8 @@
    `(completions-first-difference ((t (:foreground ,kuronami-yellow0 :bold t))))
 
    ;; TODO() Update this value to just use the color directly
-   `(dired-directory ((t (:inherit line-number))))
+   `(dired-directory ((t (:foreground ,kuronami-blue2))))
+   `(dired-symlink   ((t (:foreground ,kuronami-blue1))))
 
    `(flyspell-duplicate ((t nil))) ; Setting "flyspell-duplicate-distance" does not work for Emacs 27.2 on macOS x86 so disable the Face.
    `(flyspell-incorrect ((t (:underline (:color ,kuronami-red0 :style wave)))))
@@ -121,7 +119,7 @@
    `(ido-only-match  ((t (:foreground ,kuronami-green2 :bold t :italic t))))
    `(ido-subdir      ((t (:foreground ,kuronami-white0))))
 
-   `(mode-line           ((t (:background ,kuronami-gray1 :foreground ,kuronami-black1)))) ; Just colors. No "boxing" effect.
+   `(mode-line           ((t (:background ,kuronami-gray0 :foreground ,kuronami-black1)))) ; Just colors. No "boxing" effect.
    `(mode-line-buffer-id ((t nil)))
    `(mode-line-emphasis  ((t nil)))
    `(mode-line-inactive  ((t (:background ,kuronami-black2 :foreground ,kuronami-gray0))))
