@@ -53,7 +53,9 @@
       (kuronami-blue1   "#7fbbe9")  ; Official Ayanami Blue!
       (kuronami-blue2   "#a5bad7")  ; yellow0 -> complementary #8fa9cd -> 2 tints lighter
       (kuronami-gray0   "#b3b3b3")  ; Emacs default "gray/grey 70"
-      (kuronami-gray1   "#c9c9c9")  ; gray0 -> 3 tints lighter
+      (kuronami-gray1   "#a7a7a7")  ; gray0 -> 3 tints lighter
+      ;; (kuronami-gray1   "#b7b7b7")  ; gray0 -> 3 tints lighter
+      ;; (kuronami-gray1   "#c9c9c9")  ; gray0 -> 3 tints lighter
       (kuronami-green0  "#708b4c")  ; green2 -> 4 shades darker
       (kuronami-green1  "#668b8b")  ; Emacs default "pale turquoise 4"
       (kuronami-green2  "#bbe97f")  ; blue1 -> triadic
@@ -85,18 +87,18 @@
    `(success             ((t (:foreground ,kuronami-green2 :weight bold))))
    `(warning             ((t (:foreground ,kuronami-yellow0 :weight bold))))
 
-   `(font-lock-builtin-face           ((t (:foreground ,kuronami-blue2))))
+   `(font-lock-builtin-face           ((t (:inherit default))))
    `(font-lock-comment-face           ((t (:foreground ,kuronami-blue1 :italic t))))
    `(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
-   `(font-lock-constant-face          ((t (:foreground ,kuronami-yellow0))))
+   `(font-lock-constant-face          ((t (:inherit default))))
    `(font-lock-doc-face               ((t (:foreground ,kuronami-green0))))
-   `(font-lock-function-name-face     ((t (:foreground ,kuronami-gray1))))
+   `(font-lock-function-name-face     ((t (:inherit default))))
    `(font-lock-keyword-face           ((t (:inherit font-lock-builtin-face))))
    `(font-lock-negation-char-face     ((t (:foreground ,kuronami-red0))))
-   `(font-lock-preprocessor-face      ((t (:foreground ,kuronami-blue2))))
+   `(font-lock-preprocessor-face      ((t (:inherit font-lock-builtin-face))))
    `(font-lock-string-face            ((t (:foreground ,kuronami-green0))))
-   `(font-lock-type-face              ((t (:inherit font-lock-constant-face))))
-   `(font-lock-variable-name-face     ((t (:inherit font-lock-function-name-face))))
+   `(font-lock-type-face              ((t (:inherit font-lock-builtin-face))))
+   `(font-lock-variable-name-face     ((t (:inherit default))))
    `(font-lock-warning-face           ((t (:foreground ,kuronami-red0 :bold t :italic t))))
 
    ;; Listed alphabetically from this point.
@@ -109,7 +111,8 @@
    `(completions-common-part      ((t (:foreground ,kuronami-white0))))
    `(completions-first-difference ((t (:foreground ,kuronami-yellow0 :bold t))))
 
-   `(dired-directory ((t (:inherit font-lock-builtin-face))))
+   ;; TODO() Update this value to just use the color directly
+   `(dired-directory ((t (:inherit line-number))))
 
    `(flyspell-duplicate ((t nil))) ; Setting "flyspell-duplicate-distance" does not work for Emacs 27.2 on macOS x86 so disable the Face.
    `(flyspell-incorrect ((t (:underline (:color ,kuronami-red0 :style wave)))))
@@ -118,7 +121,7 @@
    `(ido-only-match  ((t (:foreground ,kuronami-green2 :bold t :italic t))))
    `(ido-subdir      ((t (:foreground ,kuronami-white0))))
 
-   `(mode-line           ((t (:background ,kuronami-gray0 :foreground ,kuronami-black1)))) ; Just colors. No "boxing" effect.
+   `(mode-line           ((t (:background ,kuronami-gray1 :foreground ,kuronami-black1)))) ; Just colors. No "boxing" effect.
    `(mode-line-buffer-id ((t nil)))
    `(mode-line-emphasis  ((t nil)))
    `(mode-line-inactive  ((t (:background ,kuronami-black2 :foreground ,kuronami-gray0))))
@@ -183,8 +186,9 @@
            italic)
        (30 (memq major-mode ibuffer-help-buffer-modes)
            font-lock-comment-face)
+       ;; TODO() Update this value to just use the color directly
        (35 (derived-mode-p 'dired-mode)
-           font-lock-builtin-face) ; This is the color we actually want to change
+           line-number) ; This is the color we actually want to change
        (40 (and (boundp 'emacs-lock-mode) emacs-lock-mode)
            ibuffer-locked-buffer)))
    )
