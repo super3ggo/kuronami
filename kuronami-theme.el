@@ -53,8 +53,8 @@
       (kuronami-blue1   "#7fbbe9")  ; Official Ayanami Blue!
       (kuronami-blue2   "#a5bad7")  ; yellow0 -> complementary #8fa9cd -> 2 tints lighter
       (kuronami-gray0   "#a7a7a7")  ; Emacs default "gray65/grey65/#a6a6a6" but a hair lighter
-      (kuronami-green0  "#708b4c")  ; green2 -> 4 shades darker
-      (kuronami-green1  "#668b8b")  ; Emacs default "pale turquoise 4"
+      (kuronami-green0  "#668b8b")  ; Emacs default "pale turquoise 4"
+      (kuronami-green1  "#65bab4")  ; blue1 -> analogous #7fe9e2 -> 2 shades darker
       (kuronami-green2  "#bbe97f")  ; blue1 -> triadic
       (kuronami-red0    "#e97f86")  ; blue1 -> triadic #e97fbb -> analogous
       (kuronami-white0  "#fffafa")  ; Emacs default "snow"
@@ -70,9 +70,9 @@
    `(default             ((t (:background ,kuronami-black0 :foreground ,kuronami-gray0))))
    `(error               ((t (:foreground ,kuronami-red0 :weight bold))))
    `(fringe              ((t (:background ,kuronami-black0))))
-   `(highlight           ((t (:background ,kuronami-green0))))
+   `(highlight           ((t (:background ,kuronami-green1))))
    `(isearch             ((t (:background ,kuronami-red0 :foreground ,kuronami-black0))))
-   `(lazy-highlight      ((t (:background ,kuronami-green1))))
+   `(lazy-highlight      ((t (:background ,kuronami-green0))))
    `(line-number         ((t (:inherit default :foreground ,kuronami-blue2))))
    `(link                ((t (:foreground ,kuronami-blue1 :italic t :underline t))))
    `(link-visited        ((t (:foreground ,kuronami-gray0 :italic t :underline t))))
@@ -88,12 +88,12 @@
    `(font-lock-comment-face           ((t (:foreground ,kuronami-blue1 :italic t))))
    `(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
    `(font-lock-constant-face          ((t (:inherit default))))
-   `(font-lock-doc-face               ((t (:foreground ,kuronami-green0))))
+   `(font-lock-doc-face               ((t (:foreground ,kuronami-green1))))
    `(font-lock-function-name-face     ((t (:inherit default))))
    `(font-lock-keyword-face           ((t (:inherit font-lock-builtin-face))))
    `(font-lock-negation-char-face     ((t (:foreground ,kuronami-red0))))
    `(font-lock-preprocessor-face      ((t (:inherit font-lock-builtin-face))))
-   `(font-lock-string-face            ((t (:foreground ,kuronami-green0))))
+   `(font-lock-string-face            ((t (:foreground ,kuronami-green1))))
    `(font-lock-type-face              ((t (:inherit font-lock-builtin-face))))
    `(font-lock-variable-name-face     ((t (:inherit default))))
    `(font-lock-warning-face           ((t (:foreground ,kuronami-red0 :bold t :italic t))))
@@ -163,7 +163,7 @@
 
    ;;; Third Party:
 
-   `(corfu-current ((t (:background ,kuronami-green1)))))
+   `(corfu-current ((t (:background ,kuronami-green0)))))
 
   (custom-theme-set-variables
    'kuronami
@@ -171,20 +171,20 @@
    ;;; Vanilla:
 
    ;; TODO() Determine a more elegant way to do this?
-   ;; TODO() Try adding just the color you want to change
+   ;; TODO() Try adding just the color you want to change instead of referring
+   ;;        to a Face with the color you want to use
    '(ibuffer-fontification-alist
      '((10 buffer-read-only
-           font-lock-constant-face)
+           line-number)
        (15 (and buffer-file-name
                 (string-match ibuffer-compressed-file-name-regexp buffer-file-name))
-           font-lock-doc-face)
+           line-number)
        (20 (string-match "^\\*" (buffer-name))
-           font-lock-keyword-face)
+           line-number)
        (25 (and (string-match "^ " (buffer-name)) (null buffer-file-name))
            italic)
        (30 (memq major-mode ibuffer-help-buffer-modes)
-           font-lock-comment-face)
-       ;; TODO() Update this value to just use the color directly
+           line-number)
        (35 (derived-mode-p 'dired-mode)
            line-number) ; This is the color we actually want to change
        (40 (and (boundp 'emacs-lock-mode) emacs-lock-mode)
