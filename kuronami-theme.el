@@ -49,16 +49,20 @@
 (let ((kuronami-black0  "#181a26")  ; Emacs default theme Deeper Blue
       (kuronami-black1  "#232328")  ; black2 -> 5 shades darker
       (kuronami-black2  "#464751")  ; black0 -> 2 tints lighter
+
+      ;; TODO() Refactor to blue0
+      (kuronami-blue3   "#5882a3")  ; Ayanami Blue -> 3 shades darker
+
       (kuronami-blue0   "#2e41ac")  ; Random image of blue Unit-00
       (kuronami-blue1   "#7fbbe9")  ; Official Ayanami Blue!
-      (kuronami-blue2   "#a5bad7")  ; yellow0 -> complementary #8fa9cd -> 2 tints lighter
+      (kuronami-blue2   "#8ca5c6")  ; yellow0 -> complementary #708fb8 -> 2 tints lighter
       (kuronami-gray0   "#a7a7a7")  ; Emacs default "gray65/grey65/#a6a6a6" but a hair lighter
       (kuronami-green0  "#668b8b")  ; Emacs default "pale turquoise 4"
       (kuronami-green1  "#65bab4")  ; blue1 -> analogous #7fe9e2 -> 2 shades darker
       (kuronami-green2  "#bbe97f")  ; blue1 -> triadic
       (kuronami-red0    "#e97f86")  ; blue1 -> triadic #e97fbb -> analogous
       (kuronami-white0  "#fffafa")  ; Emacs default "snow"
-      (kuronami-yellow0 "#cdb38f")) ; Naysayer #d1b897 -> 1 tint lighter #d5bfa1 -> 1 mono darker
+      (kuronami-yellow0 "#b89970")) ; Based on some Emacs default burlywood3 / #cdaa7d but a shade darker
 
   (custom-theme-set-faces
    `kuronami
@@ -67,7 +71,7 @@
 
    ;; UI:
    `(cursor              ((t (:background ,kuronami-red0))))
-   `(default             ((t (:background ,kuronami-black0 :foreground ,kuronami-gray0))))
+   `(default             ((t (:background ,kuronami-black0 :foreground ,kuronami-blue3))))
    `(error               ((t (:foreground ,kuronami-red0 :weight bold))))
    `(fringe              ((t (:background ,kuronami-black0))))
    `(highlight           ((t (:background ,kuronami-green1))))
@@ -75,7 +79,7 @@
    `(lazy-highlight      ((t (:background ,kuronami-green0))))
    `(line-number         ((t (:inherit default :foreground ,kuronami-blue2))))
    `(link                ((t (:foreground ,kuronami-blue1 :italic t :underline t))))
-   `(link-visited        ((t (:foreground ,kuronami-gray0 :italic t :underline t))))
+   `(link-visited        ((t (:foreground ,kuronami-blue3 :italic t :underline t))))
    `(match               ((t (:inherit lazy-highlight))))
    `(minibuffer-prompt   ((t (:foreground ,kuronami-white0))))
    `(region              ((t (:extend nil :background ,kuronami-blue0)))) ; Like Vim!
