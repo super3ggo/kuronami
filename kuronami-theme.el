@@ -41,27 +41,28 @@
 ;; The author has historically struggled seeing and describing colors as most
 ;; others do, so please have patience if these descriptions do not make sense.
 
+;; Color wheel tool used = https://colordesigner.io/color-wheel
+
 ;;; Code:
 
 (deftheme kuronami
   "Cool autumnal colors against a deep blue background.")
 
+;; TODO() Add a color for a docstring... possibly a new one
+;; TODO() Edit yellow0 to make it less mustardy
+;; TODO() Edit blue2 or try replacing / removing it... See how it updates after updating yellow0
 (let ((kuronami-black0  "#181a26")  ; Emacs default theme Deeper Blue
-      (kuronami-black1  "#232328")  ; black2 -> 5 shades darker
-      (kuronami-black2  "#464751")  ; black0 -> 2 tints lighter
-
-      ;; TODO() Refactor to blue0
-      (kuronami-blue3   "#5882a3")  ; Ayanami Blue -> 3 shades darker
-
+      (kuronami-black1  "#464751")  ; black0 -> 2 tints lighter
       (kuronami-blue0   "#2e41ac")  ; Random image of blue Unit-00
       (kuronami-blue1   "#7fbbe9")  ; Official Ayanami Blue!
       (kuronami-blue2   "#8ca5c6")  ; yellow0 -> complementary #708fb8 -> 2 tints lighter
-      (kuronami-gray0   "#a7a7a7")  ; Emacs default "gray65/grey65/#a6a6a6" but a hair lighter
       (kuronami-green0  "#668b8b")  ; Emacs default "pale turquoise 4"
       (kuronami-green1  "#65bab4")  ; blue1 -> analogous #7fe9e2 -> 2 shades darker
       (kuronami-green2  "#bbe97f")  ; blue1 -> triadic
       (kuronami-red0    "#e97f86")  ; blue1 -> triadic #e97fbb -> analogous
-      (kuronami-white0  "#fffafa")  ; Emacs default "snow"
+      ;; (kuronami-red1    "#b6a6bf")  ; Ayanami Blue -> modified using color wheel
+      (kuronami-red1    "#bca4af")  ; Ayanami Blue -> modified using color wheel
+      (kuronami-violet0  "#c1afe4")  ; Emacs default "pale turquoise 4"
       (kuronami-yellow0 "#b89970")) ; Based on some Emacs default burlywood3 / #cdaa7d but a shade darker
 
   (custom-theme-set-faces
@@ -71,7 +72,7 @@
 
    ;; UI:
    `(cursor              ((t (:background ,kuronami-red0))))
-   `(default             ((t (:background ,kuronami-black0 :foreground ,kuronami-blue3))))
+   `(default             ((t (:background ,kuronami-black0 :foreground ,kuronami-red1))))
    `(error               ((t (:foreground ,kuronami-red0 :weight bold))))
    `(fringe              ((t (:background ,kuronami-black0))))
    `(highlight           ((t (:background ,kuronami-green1))))
@@ -79,9 +80,9 @@
    `(lazy-highlight      ((t (:background ,kuronami-green0))))
    `(line-number         ((t (:inherit default :foreground ,kuronami-blue2))))
    `(link                ((t (:foreground ,kuronami-blue1 :italic t :underline t))))
-   `(link-visited        ((t (:foreground ,kuronami-blue3 :italic t :underline t))))
+   `(link-visited        ((t (:foreground ,kuronami-red1 :italic t :underline t))))
    `(match               ((t (:inherit lazy-highlight))))
-   `(minibuffer-prompt   ((t (:foreground ,kuronami-white0))))
+   `(minibuffer-prompt   ((t (:foreground ,kuronami-yellow0))))
    `(region              ((t (:extend nil :background ,kuronami-blue0)))) ; Like Vim!
    `(show-paren-match    ((t (:background ,kuronami-blue2))))
    `(show-paren-mismatch ((t (:background ,kuronami-red0))))
@@ -92,7 +93,7 @@
    `(font-lock-comment-face           ((t (:foreground ,kuronami-blue1 :italic t))))
    `(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
    `(font-lock-constant-face          ((t (:inherit default))))
-   `(font-lock-doc-face               ((t (:foreground ,kuronami-green1))))
+   `(font-lock-doc-face               ((t (:foreground ,kuronami-violet0))))
    `(font-lock-function-name-face     ((t (:inherit default))))
    `(font-lock-keyword-face           ((t (:inherit font-lock-builtin-face))))
    `(font-lock-negation-char-face     ((t (:foreground ,kuronami-red0))))
@@ -104,15 +105,14 @@
 
    ;; Listed alphabetically from this point.
 
-   `(compilation-column-number  ((t (:foreground ,kuronami-white0))))
+   `(compilation-column-number  ((t (:foreground ,kuronami-red1))))
    `(compilation-line-number    ((t (:foreground ,kuronami-blue2))))
    `(compilation-mode-line-exit ((t (:inherit compilation-info))))
    `(compilation-mode-line-fail ((t (:inherit compilation-error))))
 
-   `(completions-common-part      ((t (:foreground ,kuronami-white0))))
+   `(completions-common-part      ((t (:foreground ,kuronami-red1))))
    `(completions-first-difference ((t (:foreground ,kuronami-yellow0 :bold t))))
 
-   ;; TODO() Update this value to just use the color directly
    `(dired-directory ((t (:foreground ,kuronami-blue2))))
    `(dired-symlink   ((t (:foreground ,kuronami-blue1))))
 
@@ -121,12 +121,12 @@
 
    `(ido-first-match ((t (:foreground ,kuronami-yellow0 :italic t))))
    `(ido-only-match  ((t (:foreground ,kuronami-green2 :bold t :italic t))))
-   `(ido-subdir      ((t (:foreground ,kuronami-white0))))
+   `(ido-subdir      ((t (:foreground ,kuronami-red1))))
 
-   `(mode-line           ((t (:background ,kuronami-gray0 :foreground ,kuronami-black1)))) ; Just colors. No "boxing" effect.
+   `(mode-line           ((t (:background ,kuronami-red1 :foreground ,kuronami-black0)))) ; Just colors. No "boxing" effect.
    `(mode-line-buffer-id ((t nil)))
    `(mode-line-emphasis  ((t nil)))
-   `(mode-line-inactive  ((t (:background ,kuronami-black2 :foreground ,kuronami-gray0))))
+   `(mode-line-inactive  ((t (:background ,kuronami-black1 :foreground ,kuronami-red1))))
 
    ;; This theme assumes the user has whitespace-style configured for the
    ;; following Faces:
@@ -154,10 +154,10 @@
    ;; includes the newline-mark Face in whitespace-style.
 
    `(whitespace-empty                  ((t (:background nil :foreground nil))))
-   `(whitespace-hspace                 ((t (:background ,kuronami-black0 :foreground ,kuronami-black2))))
+   `(whitespace-hspace                 ((t (:background ,kuronami-black0 :foreground ,kuronami-black1))))
    `(whitespace-indentation            ((t (:inherit whitespace-hspace))))
    `(whitespace-line                   ((t (:inherit whitespace-hspace))))
-   `(whitespace-missing-newline-at-eof ((t (:background ,kuronami-yellow0 :foreground ,kuronami-black2))))
+   `(whitespace-missing-newline-at-eof ((t (:background ,kuronami-yellow0 :foreground ,kuronami-black1))))
    `(whitespace-newline                ((t (:inherit whitespace-hspace))))
    `(whitespace-space                  ((t (:inherit whitespace-hspace))))
    `(whitespace-space-after-tab        ((t (:inherit whitespace-hspace))))
