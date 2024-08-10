@@ -58,11 +58,9 @@
       (kuronami-blue2   "#8ca5c6")  ; yellow0 -> complementary #708fb8 -> 2 tints lighter
       (kuronami-green0  "#668b8b")  ; Emacs default "pale turquoise 4"
       (kuronami-green1  "#65bab4")  ; blue1 -> analogous #7fe9e2 -> 2 shades darker
-      (kuronami-green2  "#bbe97f")  ; blue1 -> triadic
+      (kuronami-green2  "#a8d172")  ; blue1 -> triadic -> 1 shade darker
       (kuronami-red0    "#e97f86")  ; blue1 -> triadic #e97fbb -> analogous
-      ;; (kuronami-red1    "#b6a6bf")  ; Ayanami Blue -> modified using color wheel
-      (kuronami-red1    "#bca4af")  ; Ayanami Blue -> modified using color wheel
-      (kuronami-violet0  "#c1afe4")  ; Emacs default "pale turquoise 4"
+      (kuronami-red1    "#b6a6bf")  ; Ayanami Blue -> modified using color wheel
       (kuronami-yellow0 "#b89970")) ; Based on some Emacs default burlywood3 / #cdaa7d but a shade darker
 
   (custom-theme-set-faces
@@ -82,18 +80,16 @@
    `(link                ((t (:foreground ,kuronami-blue1 :italic t :underline t))))
    `(link-visited        ((t (:foreground ,kuronami-red1 :italic t :underline t))))
    `(match               ((t (:inherit lazy-highlight))))
-   `(minibuffer-prompt   ((t (:foreground ,kuronami-yellow0))))
+   `(minibuffer-prompt   ((t (:foreground ,kuronami-blue1))))
    `(region              ((t (:extend nil :background ,kuronami-blue0)))) ; Like Vim!
    `(show-paren-match    ((t (:background ,kuronami-blue2))))
    `(show-paren-mismatch ((t (:background ,kuronami-red0))))
-   `(success             ((t (:foreground ,kuronami-green2 :weight bold))))
-   `(warning             ((t (:foreground ,kuronami-yellow0 :weight bold))))
 
    `(font-lock-builtin-face           ((t (:inherit default))))
    `(font-lock-comment-face           ((t (:foreground ,kuronami-blue1 :italic t))))
    `(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
    `(font-lock-constant-face          ((t (:inherit default))))
-   `(font-lock-doc-face               ((t (:foreground ,kuronami-violet0))))
+   `(font-lock-doc-face               ((t (:foreground ,kuronami-green2))))
    `(font-lock-function-name-face     ((t (:inherit default))))
    `(font-lock-keyword-face           ((t (:inherit font-lock-builtin-face))))
    `(font-lock-negation-char-face     ((t (:foreground ,kuronami-red0))))
@@ -111,7 +107,7 @@
    `(compilation-mode-line-fail ((t (:inherit compilation-error))))
 
    `(completions-common-part      ((t (:foreground ,kuronami-red1))))
-   `(completions-first-difference ((t (:foreground ,kuronami-yellow0 :bold t))))
+   `(completions-first-difference ((t (:foreground ,kuronami-red0 :bold t))))
 
    `(dired-directory ((t (:foreground ,kuronami-blue2))))
    `(dired-symlink   ((t (:foreground ,kuronami-blue1))))
@@ -119,9 +115,9 @@
    `(flyspell-duplicate ((t nil))) ; Setting "flyspell-duplicate-distance" does not work for Emacs 27.2 on macOS x86 so disable the Face.
    `(flyspell-incorrect ((t (:underline (:color ,kuronami-red0 :style wave)))))
 
-   `(ido-first-match ((t (:foreground ,kuronami-yellow0 :italic t))))
+   `(ido-first-match ((t (:foreground ,kuronami-blue1 :italic t))))
    `(ido-only-match  ((t (:foreground ,kuronami-green2 :bold t :italic t))))
-   `(ido-subdir      ((t (:foreground ,kuronami-red1))))
+   `(ido-subdir      ((t (:foreground ,kuronami-blue2)))) ;; TODO() Update?
 
    `(mode-line           ((t (:background ,kuronami-red1 :foreground ,kuronami-black0)))) ; Just colors. No "boxing" effect.
    `(mode-line-buffer-id ((t nil)))
